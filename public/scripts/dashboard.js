@@ -3,6 +3,10 @@ if (!token) {
   window.location.href = '/';
 }
 
+document.getElementById('logout-button').addEventListener('click', () => {
+  logout();
+});
+
 document.getElementById('catway-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const catwayNumber = document.getElementById('catwayNumber').value;
@@ -42,3 +46,8 @@ async function loadCatways() {
 }
 
 loadCatways();
+
+function logout() {
+  localStorage.removeItem('token');
+  window.location.href = '/';
+}
