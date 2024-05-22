@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Tableau de Bord</h1>
+  <p>Bienvenue, utilisateur connecté !</p>
+  <div>
+    <h2>Catways</h2>
+    <form id="catway-form">
+      <input type="number" id="catwayNumber" placeholder="Numéro de catway" required>
+      <select id="type" required>
+        <option value="">Type</option>
+        <option value="long">Long</option>
+        <option value="short">Court</option>
+      </select>
+      <input type="text" id="catwayState" placeholder="État du catway" required>
+      <button type="submit">Ajouter Catway</button>
+    </form>
+    <ul id="catways-list"></ul>
+  </div>
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>
