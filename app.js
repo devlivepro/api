@@ -16,9 +16,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/api/catways', auth, catwaysRoutes);
+app.use('/api/catways', catwaysRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/reservations', auth, reservationsRoutes);
+app.use('/api/reservations', reservationsRoutes);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
