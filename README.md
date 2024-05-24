@@ -32,14 +32,14 @@ Ce projet est une application de gestion des catways et des réservations pour l
 
     bash
 
-npm install
+    npm install
 
 Configurez les variables d'environnement en créant un fichier .env à la racine du projet avec le contenu suivant :
 
 plaintext
 
-    MONGODB_URI=mongodb://localhost:27017/votre-nom-de-bd
-    JWT_SECRET=votre_secret_jwt
+    MONGODB_URI=mongodb://localhost:27017/API
+    JWT_SECRET=your_jwt_secret_key
 
 Démarrage
 
@@ -51,9 +51,7 @@ mongod
 
 Lancez le serveur Node.js :
 
-bash
-
-npm start
+    npm start
 
 Ouvrez votre navigateur et accédez à :
 
