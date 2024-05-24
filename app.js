@@ -5,6 +5,7 @@ const app = express();
 const catwaysRoutes = require('./routes/catways');
 const usersRoutes = require('./routes/users');
 const reservationsRoutes = require('./routes/reservations');
+const auth = require('./middlewares/auth');
 
 require('dotenv').config();
 
@@ -13,11 +14,11 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .catch((err) => console.error(err));
 
 app.use(express.json());
-app.use(express.static('public')); // Servir les fichiers statiques à partir du répertoire 'public'
+app.use(express.static('public'));
 
-app.use('/api/catways', catwaysRoutes);
+app.use('/api/catways', auth, catwaysRoutes);
 app.use('/api/users', usersRoutes);
-app.use('/api/reservations', reservationsRoutes);
+app.use('/api/reservations', auth, reservationsRoutes);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
