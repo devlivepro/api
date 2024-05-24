@@ -7,6 +7,7 @@ document.getElementById('logout-button').addEventListener('click', () => {
   logout();
 });
 
+// Catways
 document.getElementById('catway-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const catwayNumber = document.getElementById('catwayNumber').value;
@@ -88,6 +89,7 @@ async function loadCatways() {
   });
 }
 
+// User
 async function loadUser() {
   const response = await fetch('/api/users/me', {
     headers: { 'Authorization': `Bearer ${token}` }
@@ -105,6 +107,89 @@ function logout() {
   window.location.href = '/';
 }
 
-// Load catways and user info when the page loads
+// Reservations
+document.getElementById('reservation-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const catwayNumber = document.getElementById('reservationCatwayNumber').value;
+  const clientName = document.getElementById('reservationClientName').value;
+  const boatName = document.getElementById('reservationBoatName').value;
+  const checkIn = document.getElementById('reservationCheckIn').value;
+  const checkOut = document.getElementById('reservationCheckOut').value;
+
+  try {
+    const response = await fetch('/api/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ catwayNumber, clientName, boatName, checkIn, checkOut })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert('Réservation ajoutée avec succès !');
+      loadReservations(); // Recharger la liste des réservations
+    } else {
+      alert(data.error || 'Une erreur est survenue lors de l\'ajout de la réservation.');
+    }
+  } catch (error) {
+    console.error('Erreur lors de l\'ajout de la réservation:', error);
+    alert('Erreur lors de l\'ajout de la réservation. Vérifiez la console pour plus de détails.');
+  }
+});
+
+document.getElementById('delete-reservation-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const id = document.getElementById('deleteReservationId').value;
+
+  try {
+    const response = await fetch(`/api/reservations/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+      alert('Réservation supprimée avec succès !');
+      loadReservations(); // Recharger la liste des réservations
+    } else {
+      const data = await response.json();
+      alert(data.error || 'Une erreur est survenue lors de la suppression de la réservation.');
+    }
+  } catch (error) {
+    console.error('Erreur lors de la suppression de la réservation:', error);
+    alert('Erreur lors de la suppression de la réservation. Vérifiez la console pour plus de détails.');
+  }
+});
+
+async function loadReservations() {
+  try {
+    const response = await fetch('/api/reservations', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    if (!response.ok) {
+      console.error('Failed to load reservations');
+      return;
+    }
+
+    const data = await response.json();
+    const list = document.getElementById('reservations-list');
+    list.innerHTML = '';
+    data.forEach(reservation => {
+      const item = document.createElement('li');
+      item.textContent = `ID: ${reservation._id}, Catway: ${reservation.catwayNumber}, Client: ${reservation.clientName}, Boat: ${reservation.boatName}, Check-In: ${new Date(reservation.checkIn).toLocaleString()}, Check-Out: ${new Date(reservation.checkOut).toLocaleString()}`;
+      list.appendChild(item);
+    });
+  } catch (error) {
+    console.error('Error loading reservations:', error);
+  }
+}
+
+// Load catways, reservations, and user info when the page loads
 loadCatways();
+loadReservations();
 loadUser();
