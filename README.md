@@ -25,7 +25,7 @@ Ce projet est une application de gestion des catways et des réservations pour l
 1. Clonez le dépôt :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-depot.git
+   git clone https://github.com/devlivepro/api
    cd votre-depot
 
     Installez les dépendances :
