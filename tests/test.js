@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const app = require('../app'); // Assurez-vous que le chemin vers votre fichier app.js est correct
+const app = require('../app.js');
 const User = require('../models/User');
 const Catway = require('../models/Catway');
 const Reservation = require('../models/Reservation');
@@ -17,11 +17,11 @@ describe('API Tests', () => {
     const res = await chai.request(app)
       .post('/api/users/register')
       .send({ name: 'Test User', email: 'test@example.com', password: 'password' });
-    
+
     const loginRes = await chai.request(app)
       .post('/api/users/login')
       .send({ email: 'test@example.com', password: 'password' });
-    
+
     token = loginRes.body.token;
   });
 
