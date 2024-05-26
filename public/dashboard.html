@@ -16,6 +16,7 @@
       <li><a href="dashboard.html">Tableau de bord</a></li>
       <li><a href="catways.html">Liste des catways</a></li>
       <li><a href="reservations.html">Liste des réservations</a></li>
+      <li><a href="users.html">Liste des utilisateurs</a></li>
     </ul>
   </nav>
   <div class="container">
@@ -79,18 +80,19 @@
       <div class="column section">
         <h2>Utilisateurs</h2>
         <form id="create-user-form">
-          <input type="text" id="username" placeholder="Nom d'utilisateur" required>
-          <input type="password" id="password" placeholder="Mot de passe" required>
+          <input type="text" id="userName" placeholder="Nom" required>
+          <input type="email" id="userEmail" placeholder="Email" required>
+          <input type="password" id="userPassword" placeholder="Mot de passe" required>
           <button type="submit">Créer Utilisateur</button>
         </form>
         <form id="modify-user-form">
-          <input type="number" id="modifyUserId" placeholder="ID de l'utilisateur à modifier" required>
+          <input type="text" id="modifyUserId" placeholder="ID de l'utilisateur à modifier" required>
           <input type="text" id="newUsername" placeholder="Nouveau nom d'utilisateur">
           <input type="password" id="newPassword" placeholder="Nouveau mot de passe">
           <button type="submit">Modifier Utilisateur</button>
         </form>
         <form id="delete-user-form">
-          <input type="number" id="deleteUserId" placeholder="ID de l'utilisateur à supprimer" required>
+          <input type="text" id="deleteUserId" placeholder="ID de l'utilisateur à supprimer" required>
           <button type="submit">Supprimer Utilisateur</button>
         </form>
       </div>
