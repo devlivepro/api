@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "6650581bb3d971f56e273003"
+  },
+  "catwayNumber": 1,
+  "type": "long",
+  "catwayState": "Bateau",
+  "__v": 0
+}]

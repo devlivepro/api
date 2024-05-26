@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "665080140735a7f3906ed819"
+  },
+  "catwayNumber": 1,
+  "clientName": "John Doe",
+  "boatName": "Sea Breeze",
+  "checkIn": {
+    "$date": "2024-05-01T10:00:00.000Z"
+  },
+  "checkOut": {
+    "$date": "2024-05-07T10:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665092b114f85377f3258073"
+  },
+  "catwayNumber": 2,
+  "clientName": "John Doe",
+  "boatName": "MSC Splendida",
+  "checkIn": {
+    "$date": "2024-05-24T13:13:00.000Z"
+  },
+  "checkOut": {
+    "$date": "2024-05-27T14:14:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6650937e14f85377f3258090"
+  },
+  "catwayNumber": 3,
+  "clientName": "John Doe",
+  "boatName": "Costa Rica",
+  "checkIn": {
+    "$date": "2024-05-24T13:17:00.000Z"
+  },
+  "checkOut": {
+    "$date": "2024-05-25T14:00:00.000Z"
+  },
+  "__v": 0
+}]
