@@ -1,4 +1,4 @@
-# Port de Plaisance Russell - Tableau de Bord
+# Port de Plaisance Russell - API
 
 Ce projet est une application de gestion des catways et des réservations pour le Port de Plaisance Russell. Elle permet d'ajouter, de modifier et de supprimer des catways et des réservations.
 
