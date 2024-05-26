@@ -1,5 +1,13 @@
 const Catway = require('../models/Catway');
 
+/**
+ * Crée un nouveau catway.
+ * @async
+ * @function createCatway
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.createCatway = async (req, res) => {
   const { catwayNumber, type, catwayState } = req.body;
   try {
@@ -12,6 +20,14 @@ exports.createCatway = async (req, res) => {
   }
 };
 
+/**
+ * Récupère tous les catways.
+ * @async
+ * @function getCatways
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getCatways = async (req, res) => {
   try {
     const catways = await Catway.find();
@@ -22,6 +38,14 @@ exports.getCatways = async (req, res) => {
   }
 };
 
+/**
+ * Récupère un catway par son ID.
+ * @async
+ * @function getCatway
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getCatway = async (req, res) => {
   try {
     const catway = await Catway.findById(req.params.id);
@@ -35,6 +59,14 @@ exports.getCatway = async (req, res) => {
   }
 };
 
+/**
+ * Met à jour un catway par son ID.
+ * @async
+ * @function updateCatway
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.updateCatway = async (req, res) => {
   try {
     const catway = await Catway.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -48,6 +80,14 @@ exports.updateCatway = async (req, res) => {
   }
 };
 
+/**
+ * Supprime un catway par son ID.
+ * @async
+ * @function deleteCatway
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.deleteCatway = async (req, res) => {
   try {
     const catway = await Catway.findByIdAndDelete(req.params.id);

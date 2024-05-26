@@ -18,6 +18,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+// Documentation JSDoc
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
+
 app.use('/api/catways', catwaysRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/reservations', reservationsRoutes);
