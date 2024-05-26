@@ -189,7 +189,88 @@ async function loadReservations() {
   }
 }
 
-// Load catways, reservations, and user info when the page loads
+document.getElementById('create-user-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('userName').value;
+  const email = document.getElementById('userEmail').value;
+  const password = document.getElementById('userPassword').value;
+
+  try {
+    const response = await fetch('/api/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert('Utilisateur créé avec succès !');
+    } else {
+      alert(data.error || 'Une erreur est survenue lors de la création de l\'utilisateur.');
+    }
+  } catch (error) {
+    console.error('Erreur lors de la création de l\'utilisateur:', error);
+    alert('Erreur lors de la création de l\'utilisateur. Vérifiez la console pour plus de détails.');
+  }
+});
+
+document.getElementById('modify-user-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const userId = document.getElementById('modifyUserId').value;
+  const newUsername = document.getElementById('newUsername').value;
+  const newPassword = document.getElementById('newPassword').value;
+
+  try {
+    const response = await fetch(`/api/users/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: newUsername, password: newPassword })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert('Utilisateur modifié avec succès !');
+    } else {
+      alert(data.error || 'Une erreur est survenue lors de la modification de l\'utilisateur.');
+    }
+  } catch (error) {
+    console.error('Erreur lors de la modification de l\'utilisateur:', error);
+    alert('Erreur lors de la modification de l\'utilisateur. Vérifiez la console pour plus de détails.');
+  }
+});
+
+document.getElementById('delete-user-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const userId = document.getElementById('deleteUserId').value;
+
+  try {
+    const response = await fetch(`/api/users/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert('Utilisateur supprimé avec succès !');
+    } else {
+      alert(data.error || 'Une erreur est survenue lors de la suppression de l\'utilisateur.');
+    }
+  } catch (error) {
+    console.error('Erreur lors de la suppression de l\'utilisateur:', error);
+    alert('Erreur lors de la suppression de l\'utilisateur. Vérifiez la console pour plus de détails.');
+  }
+});
+
+
 loadCatways();
 loadReservations();
 loadUser();
