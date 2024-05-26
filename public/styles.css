@@ -186,3 +186,22 @@ footer {
   flex: 1;
   max-width: 440px;
 }
+
+p.api {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p.api a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00415a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+p.api a:hover {
+  background-color: #45a049;
+}
