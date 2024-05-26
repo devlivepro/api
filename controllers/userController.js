@@ -1,6 +1,14 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
+/**
+ * Enregistre un nouvel utilisateur.
+ * @async
+ * @function register
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -12,6 +20,14 @@ exports.register = async (req, res) => {
   }
 };
 
+/**
+ * Connecte un utilisateur existant.
+ * @async
+ * @function login
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -28,6 +44,14 @@ exports.login = async (req, res) => {
   }
 };
 
+/**
+ * Récupère les détails de l'utilisateur connecté.
+ * @async
+ * @function getUser
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -37,6 +61,14 @@ exports.getUser = async (req, res) => {
   }
 };
 
+/**
+ * Met à jour un utilisateur par son ID.
+ * @async
+ * @function updateUser
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.updateUser = async (req, res) => {
   try {
     const { name, password } = req.body;
@@ -53,6 +85,14 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+/**
+ * Supprime un utilisateur par son ID.
+ * @async
+ * @function deleteUser
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
@@ -64,7 +104,14 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-// Fonction pour récupérer la liste des utilisateurs
+/**
+ * Récupère la liste de tous les utilisateurs.
+ * @async
+ * @function getUsers
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find().select('-password');

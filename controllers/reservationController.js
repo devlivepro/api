@@ -1,6 +1,13 @@
 const Reservation = require('../models/Reservation');
 
-// Créer une réservation
+/**
+ * Crée une nouvelle réservation.
+ * @async
+ * @function createReservation
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.createReservation = async (req, res) => {
   const { catwayNumber, clientName, boatName, checkIn, checkOut } = req.body;
   try {
@@ -13,7 +20,14 @@ exports.createReservation = async (req, res) => {
   }
 };
 
-// Récupérer toutes les réservations
+/**
+ * Récupère toutes les réservations.
+ * @async
+ * @function getReservations
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getReservations = async (req, res) => {
   try {
     const reservations = await Reservation.find();
@@ -24,7 +38,14 @@ exports.getReservations = async (req, res) => {
   }
 };
 
-// Récupérer une réservation par ID
+/**
+ * Récupère une réservation par ID.
+ * @async
+ * @function getReservation
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.getReservation = async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);
@@ -38,7 +59,14 @@ exports.getReservation = async (req, res) => {
   }
 };
 
-// Supprimer une réservation par ID
+/**
+ * Supprime une réservation par ID.
+ * @async
+ * @function deleteReservation
+ * @param {Object} req - L'objet de requête HTTP.
+ * @param {Object} res - L'objet de réponse HTTP.
+ * @returns {Promise<void>}
+ */
 exports.deleteReservation = async (req, res) => {
   try {
     const reservation = await Reservation.findByIdAndDelete(req.params.id);
