@@ -109,9 +109,29 @@ Supprimer une Réservation
     Remplissez le formulaire pour supprimer une réservation en utilisant son ID.
     Cliquez sur "Supprimer Réservation".
 
+
+Création d'un utilisateur avec le programme Postman qui sert d'insertion de requête rapidement :
+
+Choisissez POST, entrer l'adresse ci-dessous :
+
+    http://localhost:3000/api/users/register
+
+Cliquez sur Header, rentrer dans la case "Key" Authorization, pour le token, voici un exemple : 
+
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGU0NmRlZWY0YjQ0NWM4ZTdmNjM2NCIsImlhdCI6MTcxNjU1NTQ4MCwiZXhwIjoxNzE2NTU5MDgwfQ.My7nNzekx6Y_NDND4uvAaxZq8TTOfaGw9lEQGfQrmiM
+
+Pour la requête aller dans "Body" et colonne "Raw" :
+
+    {
+     "name": "John Doe",
+     "email": "johndoe@gmail.fr",
+     "password": "john"
+    }
+
+
 Contribuer
 
 Les contributions sont les bienvenues ! Veuillez soumettre un problème ou une demande de tirage pour toute amélioration ou correction de bug.
 Licence
 
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
+Ce projet est sous licence MIT.
